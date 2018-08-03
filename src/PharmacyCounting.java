@@ -61,7 +61,7 @@ public class PharmacyCounting {
 			if (!firstLine) {
 				try {
 				InputData inputObject = new InputData(values[0], values[1], values[2], values[3],
-						Double.parseDouble(values[4]));
+						Double.parseDouble(values[4].replaceAll("[^0-9/.]", "")));
 				dataGiven.add(inputObject);}
 				catch(NumberFormatException e) {System.out.println(e);}
 				
