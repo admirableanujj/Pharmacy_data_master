@@ -55,21 +55,29 @@ public class PharmacyCounting {
 		String line = null;
 		ArrayList<InputData> dataGiven = new ArrayList<InputData>();
 		boolean firstLine = true;
+		int dataCounter = 0;
+		int errorData = 0;
 		while ((line = br.readLine()) != null) {
 
 			String[] values = line.split(",");
 			if (!firstLine) {
+				if(values[4]==null||values[4]==""||values[4]==" ") {
+					values[4]="0000";
+				}
 				try {
 				InputData inputObject = new InputData(values[0], values[1], values[2], values[3],
 						Double.parseDouble(values[4].replaceAll("[^0-9/.]", "")));
 				dataGiven.add(inputObject);}
-				catch(NumberFormatException e) {System.out.println(e);}
+				catch(NumberFormatException e) {System.out.println(e + "Line Number:"+dataCounter);
+				errorData++;}
 				
 			} else {
 				firstLine = false;
 			}
+			dataCounter++;
 		}
 		br.close();
+		System.out.println("Total Data: "+dataCounter+"Total Error: "+errorData);
 		return dataGiven;
 
 	}
