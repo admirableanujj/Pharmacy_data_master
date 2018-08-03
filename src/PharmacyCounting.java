@@ -59,9 +59,12 @@ public class PharmacyCounting {
 
 			String[] values = line.split(",");
 			if (!firstLine) {
+				try {
 				InputData inputObject = new InputData(values[0], values[1], values[2], values[3],
 						Double.parseDouble(values[4]));
-				dataGiven.add(inputObject);
+				dataGiven.add(inputObject);}
+				catch(NumberFormatException e) {System.out.println(e);}
+				
 			} else {
 				firstLine = false;
 			}
