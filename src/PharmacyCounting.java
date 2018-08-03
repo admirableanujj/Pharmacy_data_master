@@ -77,7 +77,7 @@ public class PharmacyCounting {
 			dataCounter++;
 		}
 		br.close();
-		System.out.println("Total Data: "+dataCounter+"Total Error: "+errorData);
+		System.out.println("Total Data: "+dataCounter+"\n"+"Total Error: "+errorData);
 		return dataGiven;
 
 	}
